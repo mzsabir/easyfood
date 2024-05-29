@@ -20,11 +20,6 @@ Route::post('/item/add', [ItemController::class,'add']);
 Route::get('/item/{id}', [ItemController::class,'destroy']);
 
 
-
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

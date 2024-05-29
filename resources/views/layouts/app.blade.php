@@ -28,7 +28,13 @@
        
       </ul>
       <span class="navbar-text">
+          @guest
             <a class="nav-link" href="/login">Login</a>
+          @endguest
+          @auth
+            <a class="nav-link" href="/login">{{Auth::user()->name}}</a> |
+            <a href="/profile">Profile</a>
+          @endauth
       </span>
     </div>
   </div>
