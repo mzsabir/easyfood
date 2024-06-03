@@ -23,7 +23,7 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/item/index">Menu</a>
+          <a style="color:black" class="nav-link" href="/item/index">Menu</a>
         </li>
        
       </ul>

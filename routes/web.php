@@ -3,6 +3,7 @@
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenueCOntroller;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,14 +16,25 @@ Route::get('/abc', function () {
 });
 
 Route::get('/item/index', [ItemController::class,'index']);
-Route::get('/item/create', [ItemController::class,'create']);
+Route::get('/item/create', function(){
+    return view('items.create');
+})->middleware('auth');
 Route::post('/item/add', [ItemController::class,'add']);
 Route::get('/item/{id}', [ItemController::class,'destroy']);
 
+ROute::get('/user-logout',function(){
+    Auth::guard('web')->logout();
+
+    //$request->session()->invalidate();
+
+    //$request->session()->regenerateToken();
+
+    return redirect('/');
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('home');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
