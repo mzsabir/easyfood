@@ -33,7 +33,7 @@
     <!-- ===============================================-->
     <main class="main" id="top">
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" src="{{url('assets/img/gallery/logo.svg')}}" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">EasyFood</span></a>
+        <div class="container"><a class="navbar-brand d-inline-flex" href="/"><img class="d-inline-block" src="{{url('assets/img/gallery/logo.svg')}}" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">EasyFood</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
             <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
@@ -44,13 +44,18 @@
                 <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
               </div>
               @guest
-              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
+              <a href="/login" class="btn btn-white shadow-warning text-warning" > <i class="fas fa-user me-2"></i>Login</a>
+              <a href="/register" class="btn btn-white shadow-warning text-warning"> <i class="fas fa-user me-2"></i>Register</a>
               @endguest
               @auth
                 <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>{{Auth::user()->name}}</button>
-                
-                <a href="/user-logout">Logout</a>
+                <a href="/user-logout" class="btn btn-white shadow-warning text-warning"> <i class="fas fa-user me-2"></i>Logout</a>
+             
               @endauth
+
+              @if(isset(Auth::user()->role) && Auth::user()->role=="admin"))
+              <a href="/item/create" class="btn btn-white shadow-warning text-warning">Create Item</a>
+              @endif
             </form>
           </div>
         </div>
